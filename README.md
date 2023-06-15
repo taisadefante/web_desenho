@@ -1,3 +1,3 @@
 # web_desenho
 
-deploy: 
+deploy: https://taisadefante.github.io/web_desenho/

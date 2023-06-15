@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>desenhe</title>
+</head>
+<body>
+
+    <main>
+    <header>
+        <h1> Vamos Desenhar? - Use Sua Criatividade.</h1>
+    </header>
+
+<section>
+    <div class="canvas-desenho">
+        <canvas width="1000" height="400"></canvas>
+    </div>
+    <div class="label-cores">
+        <label> Selecione a cor </label>
+        <input type="color">
+    </div>
+</section>
+
+    <!--footer-->
+<footer>
+    <span>Copyright © 2023 Tais Defante . Todos os direitos reservados.</span>
+    <br/>
+    <span>Contato: taisadefante@hotmail.com</span>
+  
+    <div class="contato_footer" data-anime="bottom">
+      <a href="https://github.com/taisadefante" target="_blank"><img src="./img/github.svg" alt="Github"></a>
+      <a href="https://www.linkedin.com/in/ta%C3%ADs-defante-54533165/" target="_blank"><img src="./img/linkedin.svg" alt="Linkedin"></a>
+  </div>
+    
+  </footer>
+
+  </main>
+    <script>
+        var paleta = document.querySelector('input');
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 1000, 400);
+        var desenha = false;
+      
+        function desenhaCirculo(evento) {
+          if (desenha) {
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            pincel.fillStyle = paleta.value; // sempre pega o valor atual da paleta!
+            pincel.beginPath();
+            pincel.arc(x, y, 10, 0, 2 * 3.14);
+            pincel.fill();
+          }
+          console.log(x + ',' + y);
+        }
+        tela.onmousemove = desenhaCirculo;
+        // atribuindo diretamente a função anônima
+        tela.onmousedown = function() {
+          desenha = true;
+        }
+        // atribuindo diretamente a função anônima
+        tela.onmouseup = function() {
+          desenha = false;
+        }
+      </script>
+
+</body>
+</html>
+
+
